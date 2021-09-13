@@ -55,7 +55,7 @@ const Cadastro = () => {
                 <div className="form-textarea">
                     <label htmlFor="select-textarea">Mensagem:</label>
                     <div className='textarea'>
-                        <textarea name="textarea" id="" cols="120" rows="10"></textarea>
+                        <textarea name="textarea" id="" cols="100" rows="10"></textarea>
                     </div>
                 </div>
             </form>
