@@ -6,8 +6,6 @@ const Header = () => {
     return (
         <div className="header">
             <h1>zap system </h1>
-            <Content/>
-            <Menu/>
         </div>
     )
 }
