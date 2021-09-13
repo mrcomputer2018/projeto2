@@ -36,19 +36,20 @@ body {
 }
 
 .App {
-  width: 90vw;
-  height: 100vh;
+  width: 100vw;
+  height: 100vh;  
   margin: 0 auto;
 }
 
 .div-subtitle {
+  margin-top: 1rem;
   display: flex;
 }
 
 .subtitle {
   color: var(--color-darkblue);
   width: 40vw;
-  margin-left: 2rem;
+  margin-left: 4rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -69,7 +70,7 @@ body {
   border-radius: 50px;
   border: 1px solid gray;
   cursor: pointer;
-  margin-right: 1rem;
+  margin-right: 2rem;
   transition: .3s;
 }
 
@@ -85,25 +86,25 @@ body {
   background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
   font-weight: 500;
   padding: 0.875rem 2.1875rem;
-  margin-right: 2rem;
+  margin-right: 4rem;
   border-radius: 50px;
   border: none;
   cursor: pointer;
 }
 
-form {
+form.home, div.form {
   display: flex;
   justify-content: space-around;
   margin-top: 1.2rem;
 }
 
 .form-group {
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
 
-div.form-group label {
-  font-size: 1.1rem;
-  font-weight: 600;
+div.form-group label, .form-textarea label {
+  font-size: 1rem;
+  font-weight: 300;
   text-transform: capitalize;
   margin-bottom: 0.5rem;
 }
@@ -114,3 +115,45 @@ div.form-group div select {
   margin: .5rem 0;
 }
 
+.form-textarea label {
+  margin-top: 2rem;
+  margin-left: 4rem;
+}
+ 
+.form-textarea textarea {
+  margin: 1rem auto;
+}
+
+/*** header */
+.header {
+  width: 100vw ;      
+  background-color: var(--color-white);
+  border-bottom: 1px solid gray;
+
+  display: flex;
+  align-items: center;
+}
+.header h1 {
+  width: 50vw;
+  margin-left: 2rem;
+}
+.menu ul {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.menu li{
+  list-style : none;
+  margin-right: 3rem;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: var(--color-Gray);
+  transition: .3s;
+}
+
+.menu li a:hover {
+  color: var(--color-GrayishBlue);
+}

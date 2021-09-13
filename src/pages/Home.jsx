@@ -1,11 +1,8 @@
 import React from "react"
-import Header from "../componente/Header";
-import './Home.css'
 
 const Home = () => {
     return (
         <div className="home">
-            <Header />
             <div className='div-subtitle'>
                 <div className='subtitle'>
                     <h2>Mensagens</h2>

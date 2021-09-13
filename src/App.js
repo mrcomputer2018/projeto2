@@ -1,6 +1,6 @@
 import './App.css';
 import Content from './componente/Content';
-import Menu from './componente/Menu';
+import Header from './componente/Header';
 import { BrowserRouter as Router} from 'react-router-dom'
 
 
@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
         <Router>
+          <Header />
           <Content/>
-          <Menu/>
         </Router>
     </div>
   );
