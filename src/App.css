@@ -5,7 +5,11 @@
   --color-darkblue-alpha: rgba(27, 27, 50, 0.8);
   --color-blackForm: rgba(10, 10, 35, 0.9);
   --color-green: #37af65;
-  --color-greenLght: hsl(143, 52%, 60%)
+  --color-greenLght: hsl(143, 52%, 60%);
+  --color-BrightCyan: hsl(192, 70%, 51%);
+  --color-GrayishBlue: hsl(233, 8%, 62%);
+  --color-LightGrayishBlue: hsl(220, 16%, 96%);
+  --color-VeryLightGray: hsl(0, 0%, 98%);
 } 
 
 /** GLobal */
@@ -27,11 +31,86 @@ button {
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #8BC6EC;
-  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  color: var(--color-darkblue);
+  letter-spacing: .1rem;
 }
 
 .App {
+  width: 90vw;
   height: 100vh;
+  margin: 0 auto;
+}
+
+.div-subtitle {
+  display: flex;
+}
+
+.subtitle {
+  color: var(--color-darkblue);
+  width: 40vw;
+  margin-left: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn-subtitle {
+  width: 60vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btn-simple {
+  color: var(--color-darkblue);
+  background-color: var(--color-white);
+  font-weight: 500;
+  padding: 0.875rem 2.1875rem;
+  border-radius: 50px;
+  border: 1px solid gray;
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: .3s;
+}
+
+.btn-simple:hover{
+  color: var(--color-white);
+  background-color: var(--color-GrayishBlue);
+  font-weight: 600;
+  border: none;
+}
+
+.btn-gradient {
+  color: var(--color-white);
+  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  font-weight: 500;
+  padding: 0.875rem 2.1875rem;
+  margin-right: 2rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.2rem;
+}
+
+.form-group {
+  margin-left: 2rem;
+}
+
+div.form-group label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+}
+
+div.form-group div select {
+  width: 13rem;
+  height: 2.2rem;
+  margin: .5rem 0;
 }
 

@@ -6,43 +6,50 @@ const Home = () => {
     return (
         <div className="home">
             <Header />
-            <div>
-                <div>
+            <div className='div-subtitle'>
+                <div className='subtitle'>
                     <h2>Mensagens</h2>
                 </div>
-                <div>
-                    <button>Pesquisar</button>
-                    <button>Nova mensagem</button>
+                <div className='btn-subtitle'>
+                    <button className="btn-simple">Pesquisar</button>
+                    <button className='btn-gradient'>Nova mensagem</button>
                 </div>
             </div>
             
             <form>
                 <div className="form-group">
                     <label htmlFor="select-gatilho">Gatilho:</label>
-                    <select name="select-gatilho">
-                        <option value="valor1"selected></option>
-                        <option value="valor2">Tios</option>
-                        <option value="valor3">Avós</option>
-                        <option value="valor3">Padrinhos</option>
-                    </select>
+                    <div>
+                        <select name="select-gatilho">
+                            <option value="valor1"selected></option>
+                            <option value="valor2">Tios</option>
+                            <option value="valor3">Avós</option>
+                            <option value="valor3">Padrinhos</option>
+                        </select>
+                    </div>
                 </div>
+
                 <div className="form-group">
                 <label htmlFor="select-canal">Canal:</label>
-                    <select name="select-canal">
-                        <option value="valor1"selected></option>
-                        <option value="valor2">Tios</option>
-                        <option value="valor3">Avós</option>
-                        <option value="valor3">Padrinhos</option>
-                    </select>
+                    <div>
+                        <select name="select-canal">
+                            <option value="valor1"selected></option>
+                            <option value="valor2">Tios</option>
+                            <option value="valor3">Avós</option>
+                            <option value="valor3">Padrinhos</option>
+                        </select>
+                    </div>
                 </div>
                 <div className="form-group">
                     <label htmlFor="select-timer">Timer:</label>
-                    <select name="select-timer">
-                        <option value="valor1"selected></option>
-                        <option value="valor2">Tios</option>
-                        <option value="valor3">Avós</option>
-                        <option value="valor3">Padrinhos</option>
-                    </select>
+                    <div>
+                        <select name="select-timer">
+                            <option value="valor1"selected></option>
+                            <option value="valor2">Tios</option>
+                            <option value="valor3">Avós</option>
+                            <option value="valor3">Padrinhos</option>
+                        </select>
+                    </div>
                 </div>
             </form>
             
