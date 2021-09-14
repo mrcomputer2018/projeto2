@@ -1,6 +1,13 @@
 import React from "react";
+import { useHistory } from 'react-router-dom'
 
 const Cadastro = () => {
+    const history = useHistory();
+
+    const goToHome = () => {
+        history.push('/');
+    };
+
     return (
         <div className="cadastro">
             <div className='div-subtitle'>
@@ -8,7 +15,7 @@ const Cadastro = () => {
                     <h3>Mensagens</h3>
                 </div>
                 <div className='btn-subtitle'>
-                    <button className="btn-simple">Voltar</button>
+                    <button className="btn-simple" onClick={goToHome}>Voltar</button>
                     <button className='btn-gradient'>Cadastrar</button>
                 </div>
             </div>
@@ -18,36 +25,21 @@ const Cadastro = () => {
                     <div className="form-group">
                         <label htmlFor="select-gatilho">Gatilho:</label>
                         <div>
-                            <select name="select-gatilho">
-                                <option value="valor1"selected></option>
-                                <option value="valor2">Tios</option>
-                                <option value="valor3">Avós</option>
-                                <option value="valor3">Padrinhos</option>
-                            </select>
+                            <input type="text" required/>
                         </div>
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="select-canal">Canal:</label>
                         <div>
-                            <select name="select-canal">
-                                <option value="valor1"selected></option>
-                                <option value="valor2">Tios</option>
-                                <option value="valor3">Avós</option>
-                                <option value="valor3">Padrinhos</option>
-                            </select>
+                            <input type="text" required/>
                         </div>
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="select-timer">Timer:</label>
                         <div>
-                            <select name="select-timer">
-                                <option value="valor1"selected></option>
-                                <option value="valor2">Tios</option>
-                                <option value="valor3">Avós</option>
-                                <option value="valor3">Padrinhos</option>
-                            </select>
+                            <input type="time" required/>
                         </div>
                     </div>
                 </div>

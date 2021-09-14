@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react"
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import api from '../services/api'
 
 const Home = (props) => {
+    const history = useHistory();
+
+    const goToNewMessenger = () => {
+        history.push('/cadastro');
+    };
+
     //* Iniciando estado
     const [ optionSelected, setOptionSelected ] = useState('')
     const [ optionSelectedChannel, setOptionSelectedChannel ] = useState('')
@@ -91,7 +97,7 @@ const Home = (props) => {
                 <div className='btn-subtitle'>
                     <button className="btn-simple">Limpa Tela</button>
                     <button className="btn-simple">Pesquisar</button>
-                    <button className='btn-gradient' ><Link to='/cadastro'>Nova Mensagem</Link></button>
+                    <button className='btn-gradient' onClick={goToNewMessenger}>Nova Mensagem</button>
                 </div>
             </div>
             
