@@ -8,9 +8,9 @@ const Home = (props) => {
     const [ optionSelectedChannel, setOptionSelectedChannel ] = useState('')
     const [ optionSelectedTimers, setOptionSelectedTimers ] = useState('')
 
-    const[ options, setOptions ] = useState([])
-    const[ optionsChannel, setOptionsChannel ] = useState([])
-    const[ optionsTimer, setOptionsTimer ] = useState([])
+    const [ options, setOptions ] = useState([])
+    const [ optionsChannel, setOptionsChannel ] = useState([])
+    const [ optionsTimer, setOptionsTimer ] = useState([])
 
     //* Get em server
     const handleGetOptionsTriggers = async () => {
@@ -20,7 +20,7 @@ const Home = (props) => {
             const optionsFormatted = response.data.map((item) => {
                 return {
                     label: item.name,
-                    value: item.name
+                    value: item.id
                 }
             })
             setOptions(optionsFormatted);
@@ -63,11 +63,7 @@ const Home = (props) => {
         }
     }
 
-   /*  const pageNewMessenger = async () => {
-        await api.get("/cadastro")
-    } */
-
-    //*consumindo a api
+   //*consumindo a api
     useEffect(() => {
         handleGetOptionsTriggers()
     }, [])
@@ -80,6 +76,12 @@ const Home = (props) => {
         handleGetOptionsTimers()
     }, [])
 
+    /* useEffect(() => {
+        setOptionSelected('')
+        setOptionSelectedChannel('')
+        setOptionSelectedTimers('')
+    },[]) */
+    
     return (
         <div className="home">
             <div className='div-subtitle'>
@@ -87,8 +89,9 @@ const Home = (props) => {
                     <h2>Mensagens</h2>
                 </div>
                 <div className='btn-subtitle'>
+                    <button className="btn-simple">Limpa Tela</button>
                     <button className="btn-simple">Pesquisar</button>
-                    <button className='btn-gradient'/*  onClick={(event) => pageNewMessenger()} */>Nova mensagem</button>
+                    <button className='btn-gradient' ><Link to='/cadastro'>Nova Mensagem</Link></button>
                 </div>
             </div>
             
