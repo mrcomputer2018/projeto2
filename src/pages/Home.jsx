@@ -13,7 +13,7 @@ const Home = () => {
                 </div>
             </div>
             
-            <form>
+            <form className='home'>
                 <div className="form-group">
                     <label htmlFor="select-gatilho">Gatilho:</label>
                     <div>
