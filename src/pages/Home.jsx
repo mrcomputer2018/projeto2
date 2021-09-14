@@ -1,6 +1,32 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import api from '../services/api'
 
-const Home = () => {
+const Home = (props) => {
+    //* Iniciando estado
+    const[ optionSelected, setOptionSelected ] = useState('')
+
+    //* Get em server
+    const handleGetOptionsTriggers = async () => {
+        try {
+            const response = await api.get('/triggers')
+            const optionsFormatted = response.data.map((item) => {
+                return {
+                    label: item.name,
+                    value: item.name
+                }
+            })
+            
+            setOptionSelected(optionsFormatted) 
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    //*consumindo a api
+    useEffect(() => {
+        handleGetOptionsTriggers()
+    }, [])
     return (
         <div className="home">
             <div className='div-subtitle'>
