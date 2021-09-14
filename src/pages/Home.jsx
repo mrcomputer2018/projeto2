@@ -82,12 +82,7 @@ const Home = (props) => {
         handleGetOptionsTimers()
     }, [])
 
-    /* useEffect(() => {
-        setOptionSelected('')
-        setOptionSelectedChannel('')
-        setOptionSelectedTimers('')
-    },[]) */
-    
+        
     return (
         <div className="home">
             <div className='div-subtitle'>
@@ -95,7 +90,7 @@ const Home = (props) => {
                     <h2>Mensagens</h2>
                 </div>
                 <div className='btn-subtitle'>
-                    <button className="btn-simple">Limpa Tela</button>
+                    <button type='reset' className="btn-simple">Limpa Tela</button>
                     <button className="btn-simple">Pesquisar</button>
                     <button className='btn-gradient' onClick={goToNewMessenger}>Nova Mensagem</button>
                 </div>
@@ -108,6 +103,7 @@ const Home = (props) => {
                         <select className="select-gatilho"
                             value={optionSelected} 
                             onChange={(event) => setOptionSelected(event.target.value)}>
+                                <option value=""></option>
                                 {options.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
                         </select>
                     </div>
@@ -119,6 +115,7 @@ const Home = (props) => {
                         <select className="select-canal"
                             value={optionSelectedChannel} 
                             onChange={(event) => setOptionSelectedChannel(event.target.value)}>
+                                <option value=""></option>
                                 {optionsChannel.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
                         </select>
                     </div>
@@ -129,6 +126,7 @@ const Home = (props) => {
                         <select className="select-timer"
                             value={optionSelectedTimers} 
                             onChange={(event) => setOptionSelectedTimers(event.target.value)}>
+                                <option value=""></option>
                                 {optionsTimer.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
                         </select>
                     </div>
