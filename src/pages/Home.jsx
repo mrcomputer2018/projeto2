@@ -1,32 +1,85 @@
 import React, { useEffect, useState } from "react"
+import { Link } from 'react-router-dom'
 import api from '../services/api'
 
 const Home = (props) => {
     //* Iniciando estado
-    const[ optionSelected, setOptionSelected ] = useState('')
+    const [ optionSelected, setOptionSelected ] = useState('')
+    const [ optionSelectedChannel, setOptionSelectedChannel ] = useState('')
+    const [ optionSelectedTimers, setOptionSelectedTimers ] = useState('')
+
+    const[ options, setOptions ] = useState([])
+    const[ optionsChannel, setOptionsChannel ] = useState([])
+    const[ optionsTimer, setOptionsTimer ] = useState([])
 
     //* Get em server
     const handleGetOptionsTriggers = async () => {
         try {
             const response = await api.get('/triggers')
+            
             const optionsFormatted = response.data.map((item) => {
                 return {
                     label: item.name,
                     value: item.name
                 }
             })
-            
-            setOptionSelected(optionsFormatted) 
-
+            setOptions(optionsFormatted);
+        
         } catch (error) {
             console.log(error);
         }
     }
 
+    const handleGetOptionsChannels = async () => {
+        try {
+            const response = await api.get('/channels')
+            
+            const optionsFormattedChannel = response.data.map((item) => {
+                return {
+                    label: item.name,
+                    value: item.id
+                }
+            })
+            setOptionsChannel(optionsFormattedChannel);
+        
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleGetOptionsTimers = async () => {
+        try {
+            const response = await api.get('/messages')
+
+            const optionsFormattedTimers = response.data.map((item) => {
+                return {
+                    label: item.timer,
+                    value: item.timer
+                }
+            })
+            setOptionsTimer(optionsFormattedTimers);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+   /*  const pageNewMessenger = async () => {
+        await api.get("/cadastro")
+    } */
+
     //*consumindo a api
     useEffect(() => {
         handleGetOptionsTriggers()
     }, [])
+
+    useEffect(() => {
+        handleGetOptionsChannels()
+    }, [])
+
+    useEffect(() => {
+        handleGetOptionsTimers()
+    }, [])
+
     return (
         <div className="home">
             <div className='div-subtitle'>
@@ -35,7 +88,7 @@ const Home = (props) => {
                 </div>
                 <div className='btn-subtitle'>
                     <button className="btn-simple">Pesquisar</button>
-                    <button className='btn-gradient'>Nova mensagem</button>
+                    <button className='btn-gradient'/*  onClick={(event) => pageNewMessenger()} */>Nova mensagem</button>
                 </div>
             </div>
             
@@ -43,34 +96,31 @@ const Home = (props) => {
                 <div className="form-group">
                     <label htmlFor="select-gatilho">Gatilho:</label>
                     <div>
-                        <select name="select-gatilho">
-                            <option value="valor1"selected></option>
-                            <option value="valor2">Tios</option>
-                            <option value="valor3">Avós</option>
-                            <option value="valor3">Padrinhos</option>
+                        <select className="select-gatilho"
+                            value={optionSelected} 
+                            onChange={(event) => setOptionSelected(event.target.value)}>
+                                {options.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
                         </select>
                     </div>
                 </div>
 
                 <div className="form-group">
-                <label htmlFor="select-canal">Canal:</label>
+                    <label htmlFor="select-canal">Canal:</label>
                     <div>
-                        <select name="select-canal">
-                            <option value="valor1"selected></option>
-                            <option value="valor2">Tios</option>
-                            <option value="valor3">Avós</option>
-                            <option value="valor3">Padrinhos</option>
+                        <select className="select-canal"
+                            value={optionSelectedChannel} 
+                            onChange={(event) => setOptionSelectedChannel(event.target.value)}>
+                                {optionsChannel.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
                         </select>
                     </div>
                 </div>
                 <div className="form-group">
                     <label htmlFor="select-timer">Timer:</label>
                     <div>
-                        <select name="select-timer">
-                            <option value="valor1"selected></option>
-                            <option value="valor2">Tios</option>
-                            <option value="valor3">Avós</option>
-                            <option value="valor3">Padrinhos</option>
+                        <select className="select-timer"
+                            value={optionSelectedTimers} 
+                            onChange={(event) => setOptionSelectedTimers(event.target.value)}>
+                                {optionsTimer.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
                         </select>
                     </div>
                 </div>
