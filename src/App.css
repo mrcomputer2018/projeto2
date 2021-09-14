@@ -9,6 +9,7 @@
   --color-GrayishBlue: hsl(233, 8%, 62%);
   --color-LightGrayishBlue: hsl(220, 16%, 96%);
   --color-VeryLightGray: hsl(0, 0%, 98%);
+  --color-orange: rgba(255, 145, 0, 1);
 } 
 
 /** GLobal */
@@ -121,7 +122,7 @@ div.form-group div select {
 /*** header */
 .header {
   width: 100vw ;      
-  background-color: var(--color-white);
+  background-color: var(--color-orange);
   border-bottom: 1px solid gray;
 
   display: flex;
@@ -143,6 +144,7 @@ div.form-group div select {
 }
 
 .menu li a {
+  font-size: 1.2rem;
   text-decoration: none;
   color: var(--color-Gray);
   transition: .3s;
@@ -175,4 +177,11 @@ div.form-group div select {
 
 .dashboard h4 {
   margin-left: 1.5rem;
+}
+
+/*** table */
+div.table {
+  width: 70vw;
+  display: flex;
+  justify-content: center;
 }

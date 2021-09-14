@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import api from '../services/api'
 
 const Home = (props) => {
@@ -8,6 +8,15 @@ const Home = (props) => {
     const goToNewMessenger = () => {
         history.push('/cadastro');
     };
+
+    const location = useLocation();
+    useEffect(() => {
+        const currentPath = location.pathname;
+        const searchParams = new URLSearchParams(location.search);
+        console.log("searchparams :" + searchParams)
+    }, [location]);
+
+    
 
     //* Iniciando estado
     const [ optionSelected, setOptionSelected ] = useState('')
@@ -91,7 +100,7 @@ const Home = (props) => {
                 </div>
                 <div className='btn-subtitle'>
                     <button type='reset' className="btn-simple">Limpa Tela</button>
-                    <button className="btn-simple">Pesquisar</button>
+                    <button type='submit' className="btn-simple">Pesquisar</button>
                     <button className='btn-gradient' onClick={goToNewMessenger}>Nova Mensagem</button>
                 </div>
             </div>
@@ -132,6 +141,39 @@ const Home = (props) => {
                     </div>
                 </div>
             </form>
+
+            <div className='table'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Gatilho</th>
+                            <th>Canal</th>
+                            <th>Tempo</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>abertura_conta</td>
+                            <td>sms</td>
+                            <td>15:00</td>
+                            <td><button className='btn-gradient'>ver mensagem</button></td>
+                        </tr>
+                        <tr>
+                            <td>fez_pix</td>
+                            <td>sms</td>
+                            <td>5:00</td>
+                            <td><button className='btn-gradient'>ver mensagem</button></td>
+                        </tr>
+                        <tr>
+                            <td>abertura_conta</td>
+                            <td>whatsapp</td>
+                            <td>17:00</td>
+                            <td><button className='btn-gradient'>ver mensagem</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             
         </div>
     )
