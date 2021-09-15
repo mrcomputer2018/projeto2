@@ -50,18 +50,11 @@
       "id": 1631313726740
     },
     {
-      "id": 22,
-      "channel": "Oi",
-      "trigger": "abertura_conta",
-      "timer": "16:45",
-      "message": "testando o post  do app"
-    },
-    {
-      "id": 23,
+      "id": 1631746355710,
       "channel": "sms",
-      "trigger": "chave_pix",
-      "timer": "16:56",
-      "message": "Criando uma chave PIX de Teste"
+      "trigger": "fez_pix",
+      "timer": "19:52",
+      "message": "testando agora o modal"
     }
   ],
   "channels": [

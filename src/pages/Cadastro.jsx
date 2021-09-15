@@ -10,30 +10,41 @@ const Cadastro = () => {
         history.push('/');
     };
 
-    const [ id, setId ] = useState(24)
+    const [ id, setId ] = useState(25)
     const [ trigger, setTrigger ] = useState('')
     const [ channel, setChannel ] = useState('')
     const [ timer, setTimer ] = useState('')
     const [ message, setMessage ] = useState('')
 
-    const handleSubmit = async () => {
-        const request = {
-            "id": id,
-            "channel": channel,
-            "trigger": trigger,
-            "timer": timer,
-            "message": message
+    const handleSubmit = async (event) => {
+        try {
+            event.preventDefault()
+
+            const request = {
+                "id": Date.now(),
+                "channel": channel,
+                "trigger": trigger,
+                "timer": timer,
+                "message": message
+            }
+            const response = await api.post('/messages/', request)
+            
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Cadastro feito com sucesso!!!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } catch (error) {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro ao cadastrar!!!',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
-        const response = await api.post('/messages/', request)
-        setId(id + 1)
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Cadastro feito com sucesso!!!',
-            showConfirmButton: false,
-            timer: 1500
-        })
-        console.log('response :' + response)
     }
 
     return (

@@ -148,7 +148,7 @@ const Home = (props) => {
 
     useEffect(() => {
         handleGetTable()
-    }, [])
+    }, [setOptionSelected])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
