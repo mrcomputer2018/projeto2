@@ -10,6 +10,18 @@ const Home = (props) => {
         history.push('/cadastro');
     };
 
+    const viewModalMessage = (message) => {
+        Swal.fire({
+            title: `${message}`,
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+        })
+    }
+
     
     //* Iniciando estado doos selects
     const [ optionSelected, setOptionSelected ] = useState('')
@@ -29,10 +41,10 @@ const Home = (props) => {
         try {
             const response = await api.get('/triggers')
             
-            const optionsFormatted = response.data.map((item) => {
+            const optionsFormatted = response.data.map(({ name }) => {
                 return {
-                    label: item.name,
-                    value: item.id
+                    label: name,
+                    value: name
                 }
             })
             setOptions(optionsFormatted);
@@ -51,10 +63,10 @@ const Home = (props) => {
         try {
             const response = await api.get('/channels')
             
-            const optionsFormattedChannel = response.data.map((item) => {
+            const optionsFormattedChannel = response.data.map(({ name }) => {
                 return {
-                    label: item.name,
-                    value: item.id
+                    label: name,
+                    value: name
                 }
             })
             setOptionsChannel(optionsFormattedChannel);
@@ -73,10 +85,10 @@ const Home = (props) => {
         try {
             const response = await api.get('/messages')
 
-            const optionsFormattedTimers = response.data.map((item) => {
+            const optionsFormattedTimers = response.data.map(({ timer }) => {
                 return {
-                    label: item.timer,
-                    value: item.timer
+                    label: timer,
+                    value: timer
                 }
             })
             setOptionsTimer(optionsFormattedTimers);
@@ -128,60 +140,97 @@ const Home = (props) => {
     useEffect(() => {
         handleGetOptionsTimers()
     }, [])
+
     useEffect(() => {
         handleGetTable()
     }, [])
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+
+        const response = await api.get(`/messages?trigger_like=${optionSelected}&channel_like=${optionSelectedChannel}&timer_like=${optionSelectedTimers}`)
+
+        setTd(response.data)
+    }
+
+    /* const handleSubmit = async (event) => {
+        event.preventDefault()
+        let url = '/messages?'
+
+        if (optionSelected) {
+            url += `trigger_like=${optionSelected}`
+        }
+
+        if (optionSelectedChannel) {
+            if (optionSelected) {
+                url += '&'
+            }
+            url += `channel_like=${optionSelectedChannel}`
+        }
+
+        if (optionSelectedTimers) {
+            if (optionSelected || optionSelectedChannel) {
+                url += '&'
+            }
+            url += `timer_like=${optionSelectedTimers}`
+        }
+
+        const response = await api.get(url)
+
+        setTd(response.data)
+    } */
            
     return (
         <div className="home">
-            <div className='div-subtitle'>
-                <div className='subtitle'>
-                    <h2>Mensagens</h2>
-                </div>
-                <div className='btn-subtitle'>
-                    <button type='reset' className="btn-simple">Limpa Tela</button>
-                    <button type='submit' className="btn-simple">Pesquisar</button>
-                    <button className='btn-gradient' onClick={goToNewMessenger}>Nova Mensagem</button>
-                </div>
-            </div>
-            
-            <form className='home'>
-                <div className="form-group">
-                    <label htmlFor="select-gatilho">Gatilho:</label>
-                    <div>
-                        <select className="select-gatilho"
-                            value={optionSelected} 
-                            onChange={(event) => setOptionSelected(event.target.value)}>
-                                <option value=""></option>
-                                {options.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
-                        </select>
+            <form onSubmit={handleSubmit}>
+                <div className='div-subtitle'>
+                    <div className='subtitle'>
+                        <h2>Mensagens</h2>
+                    </div>
+                    <div className='btn-subtitle'>
+                        <button type='reset' className="btn-simple">Limpa Tela</button>
+                        <button type='submit' className="btn-simple">Pesquisar</button>
+                        <button className='btn-gradient' onClick={goToNewMessenger}>Nova Mensagem</button>
                     </div>
                 </div>
+                
+                <form className='home'>
+                    <div className="form-group">
+                        <label htmlFor="select-gatilho">Gatilho:</label>
+                        <div>
+                            <select className="select-gatilho"
+                                value={optionSelected} 
+                                onChange={(event) => setOptionSelected(event.target.value)}>
+                                    <option value=""></option>
+                                    {options.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
+                            </select>
+                        </div>
+                    </div>
 
-                <div className="form-group">
-                    <label htmlFor="select-canal">Canal:</label>
-                    <div>
-                        <select className="select-canal"
-                            value={optionSelectedChannel} 
-                            onChange={(event) => setOptionSelectedChannel(event.target.value)}>
-                                <option value=""></option>
-                                {optionsChannel.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
-                        </select>
+                    <div className="form-group">
+                        <label htmlFor="select-canal">Canal:</label>
+                        <div>
+                            <select className="select-canal"
+                                value={optionSelectedChannel} 
+                                onChange={(event) => setOptionSelectedChannel(event.target.value)}>
+                                    <option value=""></option>
+                                    {optionsChannel.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="select-timer">Timer:</label>
-                    <div>
-                        <select className="select-timer"
-                            value={optionSelectedTimers} 
-                            onChange={(event) => setOptionSelectedTimers(event.target.value)}>
-                                <option value=""></option>
-                                {optionsTimer.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
-                        </select>
+                    <div className="form-group">
+                        <label htmlFor="select-timer">Timer:</label>
+                        <div>
+                            <select className="select-timer"
+                                value={optionSelectedTimers} 
+                                onChange={(event) => setOptionSelectedTimers(event.target.value)}>
+                                    <option value=""></option>
+                                    {optionsTimer.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
+                            </select>
+                        </div>
                     </div>
-                </div>
+                </form>
             </form>
-
             <div className='table'>
                 <table>
                     <thead>
@@ -198,7 +247,12 @@ const Home = (props) => {
                                 <td>{item.trigger}</td>
                                 <td>{item.channel}</td>
                                 <td>{item.timer}</td>
-                                <td><button className='btn-gradient table'>ver mensagem</button></td>
+                                <td>
+                                    <button 
+                                        className='btn-gradient table' 
+                                        onClick={()=> {viewModalMessage(item.message)}}>ver mensagem
+                                    </button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
