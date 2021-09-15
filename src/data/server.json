@@ -11,7 +11,7 @@
       "id": 21,
       "channel": "sms",
       "trigger": "fez_pix",
-      "timer": "5:00",
+      "timer": "05:00",
       "message": " Na correria do dia a dia a Oi Conta Zap te ajuda a lembrar de algumas coisinhas! Ja conseguiu pagar seu boleto? Se sim, desconsidere a mensagem"
     },
     {
@@ -48,6 +48,20 @@
       "timer": "00:24",
       "message": "Sua chave pix e invalida",
       "id": 1631313726740
+    },
+    {
+      "id": 22,
+      "channel": "Oi",
+      "trigger": "abertura_conta",
+      "timer": "16:45",
+      "message": "testando o post  do app"
+    },
+    {
+      "id": 23,
+      "channel": "sms",
+      "trigger": "chave_pix",
+      "timer": "16:56",
+      "message": "Criando uma chave PIX de Teste"
     }
   ],
   "channels": [

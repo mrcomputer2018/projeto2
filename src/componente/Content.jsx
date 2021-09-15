@@ -4,7 +4,6 @@ import Dashboard from "../pages/Dashboard";
 import Cadastro from "../pages/Cadastro";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
-import ModalMessage from "../pages/ModalMessage";
 
 const Content = (props) => {
     return (
@@ -15,9 +14,6 @@ const Content = (props) => {
                 </Route>
                 <Route path='/cadastro'>
                     <Cadastro />
-                </Route>
-                <Route path='/message'>
-                    <ModalMessage />
                 </Route>
                 <Route path='/' exact>
                     <Home/>

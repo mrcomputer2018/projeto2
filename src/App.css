@@ -116,14 +116,28 @@ div.form-group label, .form-textarea label {
   margin-bottom: 0.5rem;
 }
 
-div.form-group div select {
+div.form-group div select, div.form-group div input {
   width: 14rem;
   height: 2.6rem;
   margin: .5rem 0;
 }
 
+.form-textarea {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .form-textarea label {
-  margin-left: 4rem;
+  font-size: 1.1rem;
+  margin-left: .5rem;
+}
+
+.form-textarea textarea {
+  width: 100%;
+  margin: .3rem;
+
 }
 
 /*** header */
@@ -209,4 +223,23 @@ div.table {
 
 .table td button {
   margin-right: 0;
+}
+
+/*** Not Found */
+.notfound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.notfound h2 {
+  font-size: 7rem;
+  margin: 10rem 0 5rem 0;
+}
+
+.notfound p {
+  font-size: 3rem;
+  margin-top: 0rem;
+  letter-spacing: 0.2rem;
 }
