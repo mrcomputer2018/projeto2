@@ -30,11 +30,6 @@ const Cadastro = () => {
 
             const response = await api.post('/messages/', request)
 
-            setTrigger('')
-            setChannel('')
-            setTimer('')
-            setMessage('')
-            
             Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -42,6 +37,12 @@ const Cadastro = () => {
                 showConfirmButton: false,
                 timer: 1500
             })
+
+            setTrigger('')
+            setChannel('')
+            setTimer('')
+            setMessage('')
+            
         } catch (error) {
             Swal.fire({
                 position: 'center',
