@@ -101,6 +101,7 @@ body {
 form.home, div.form {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   margin-top: 1.2rem;
 }
 
@@ -116,8 +117,8 @@ div.form-group label, .form-textarea label {
 }
 
 div.form-group div select {
-  width: 13rem;
-  height: 2.2rem;
+  width: 14rem;
+  height: 2.6rem;
   margin: .5rem 0;
 }
 

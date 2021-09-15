@@ -12,7 +12,8 @@ const Home = (props) => {
 
     const viewModalMessage = (message) => {
         Swal.fire({
-            title: `${message}`,
+            title: 'Menssagem',
+            text: `${message}`,
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
             },
@@ -22,6 +23,11 @@ const Home = (props) => {
         })
     }
 
+    const limpaTela = () => {
+        setOptionSelected('')
+        setOptionSelectedChannel('')
+        setOptionSelectedTimers('')
+    }
     
     //* Iniciando estado doos selects
     const [ optionSelected, setOptionSelected ] = useState('')
@@ -33,7 +39,6 @@ const Home = (props) => {
     const [ optionsTimer, setOptionsTimer ] = useState([])
 
     //* Iniciando estado das tabelas
-    const [ tables, setTables ] = useState('')
     const [td, setTd ] = useState([])
 
     //* Get em server
@@ -188,7 +193,7 @@ const Home = (props) => {
                         <h2>Mensagens</h2>
                     </div>
                     <div className='btn-subtitle'>
-                        <button type='reset' className="btn-simple">Limpa Tela</button>
+                        <button type='reset' className="btn-simple" onClick={limpaTela}>Limpa Campos</button>
                         <button type='submit' className="btn-simple">Pesquisar</button>
                         <button className='btn-gradient' onClick={goToNewMessenger}>Nova Mensagem</button>
                     </div>
@@ -250,7 +255,7 @@ const Home = (props) => {
                                 <td>
                                     <button 
                                         className='btn-gradient table' 
-                                        onClick={()=> {viewModalMessage(item.message)}}>ver mensagem
+                                        onClick={() => {viewModalMessage(item.message)}}>ver mensagem
                                     </button>
                                 </td>
                             </tr>
