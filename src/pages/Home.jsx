@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import api from '../services/api'
+import Swal from 'sweetalert2'
 
 const Home = (props) => {
     const history = useHistory();
@@ -9,16 +10,8 @@ const Home = (props) => {
         history.push('/cadastro');
     };
 
-    const location = useLocation();
-    useEffect(() => {
-        const currentPath = location.pathname;
-        const searchParams = new URLSearchParams(location.search);
-        console.log("searchparams :" + searchParams)
-    }, [location]);
-
     
-
-    //* Iniciando estado
+    //* Iniciando estado doos selects
     const [ optionSelected, setOptionSelected ] = useState('')
     const [ optionSelectedChannel, setOptionSelectedChannel ] = useState('')
     const [ optionSelectedTimers, setOptionSelectedTimers ] = useState('')
@@ -26,6 +19,10 @@ const Home = (props) => {
     const [ options, setOptions ] = useState([])
     const [ optionsChannel, setOptionsChannel ] = useState([])
     const [ optionsTimer, setOptionsTimer ] = useState([])
+
+    //* Iniciando estado das tabelas
+    const [ tables, setTables ] = useState('')
+    const [td, setTd ] = useState([])
 
     //* Get em server
     const handleGetOptionsTriggers = async () => {
@@ -42,6 +39,11 @@ const Home = (props) => {
         
         } catch (error) {
             console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Servidor falhou!!!'
+            })
         }
     }
 
@@ -59,6 +61,11 @@ const Home = (props) => {
         
         } catch (error) {
             console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Servidor falhou!!!'
+            })
         }
     }
 
@@ -75,6 +82,37 @@ const Home = (props) => {
             setOptionsTimer(optionsFormattedTimers);
         } catch (error) {
             console.log(error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Servidor falhou!!!'
+            })
+        }
+    }
+
+    //*GET para tabelas
+    const handleGetTable = async () => {
+        try {
+            const response = await api.get('/messages')
+            const tdFormatted = response.data.map((item) => {
+                return {
+                    trigger: item.trigger,
+                    channel: item.channel,
+                    timer: item.timer,
+                    id: item.id,
+                    message: item.message
+                }
+            })
+            setTd(tdFormatted)
+            console.log(td)
+
+        } catch (error) {
+            console.log(error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Servidor falhou!!!'
+            })
         }
     }
 
@@ -90,8 +128,10 @@ const Home = (props) => {
     useEffect(() => {
         handleGetOptionsTimers()
     }, [])
-
-        
+    useEffect(() => {
+        handleGetTable()
+    }, [])
+           
     return (
         <div className="home">
             <div className='div-subtitle'>
@@ -153,24 +193,14 @@ const Home = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>abertura_conta</td>
-                            <td>sms</td>
-                            <td>15:00</td>
-                            <td><button className='btn-gradient table'>ver mensagem</button></td>
-                        </tr>
-                        <tr>
-                            <td>fez_pix</td>
-                            <td>sms</td>
-                            <td>5:00</td>
-                            <td><button className='btn-gradient table'>ver mensagem</button></td>
-                        </tr>
-                        <tr>
-                            <td>abertura_conta</td>
-                            <td>whatsapp</td>
-                            <td>17:00</td>
-                            <td><button className='btn-gradient table'>ver mensagem</button></td>
-                        </tr>
+                        {td.map(item => (
+                            <tr key={item.id}>
+                                <td>{item.trigger}</td>
+                                <td>{item.channel}</td>
+                                <td>{item.timer}</td>
+                                <td><button className='btn-gradient table'>ver mensagem</button></td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
