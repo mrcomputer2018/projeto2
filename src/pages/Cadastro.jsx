@@ -10,7 +10,7 @@ const Cadastro = () => {
         history.push('/');
     };
 
-    const [ id, setId ] = useState(23)
+    const [ id, setId ] = useState(24)
     const [ trigger, setTrigger ] = useState('')
     const [ channel, setChannel ] = useState('')
     const [ timer, setTimer ] = useState('')
