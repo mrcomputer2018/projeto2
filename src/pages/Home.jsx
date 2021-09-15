@@ -44,7 +44,7 @@ const Home = (props) => {
     //* Get em server
     const handleGetOptionsTriggers = async () => {
         try {
-            const response = await api.get('/triggers')
+            const response = await api.get('/triggers/?_sort=name&_order=asc')
             
             const optionsFormatted = response.data.map(({ name }) => {
                 return {
@@ -66,7 +66,7 @@ const Home = (props) => {
 
     const handleGetOptionsChannels = async () => {
         try {
-            const response = await api.get('/channels')
+            const response = await api.get('/channels/?_sort=name&_order=asc')
             
             const optionsFormattedChannel = response.data.map(({ name }) => {
                 return {
@@ -88,7 +88,7 @@ const Home = (props) => {
 
     const handleGetOptionsTimers = async () => {
         try {
-            const response = await api.get('/messages')
+            const response = await api.get('/messages/?_sort=timer&_order=asc')
 
             const optionsFormattedTimers = response.data.map(({ timer }) => {
                 return {
