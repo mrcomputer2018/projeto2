@@ -27,7 +27,13 @@ const Cadastro = () => {
                 "timer": timer,
                 "message": message
             }
+
             const response = await api.post('/messages/', request)
+
+            setTrigger('')
+            setChannel('')
+            setTimer('')
+            setMessage('')
             
             Swal.fire({
                 position: 'center',
