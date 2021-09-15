@@ -18,7 +18,7 @@
       "id": 1,
       "channel": "whatsapp",
       "trigger": "abertura_conta",
-      "timer": "73:00",
+      "timer": "13:00",
       "message": " Na correria do dia a dia a Oi Conta Zap te ajuda a lembrar de algumas coisinhas! Ja conseguiu pagar seu boleto? Se sim, desconsidere a mensagem"
     },
     {
@@ -32,7 +32,7 @@
       "id": 1631313726738,
       "channel": "email",
       "trigger": "fez_pix",
-      "timer": "2323",
+      "timer": "23:23",
       "message": "23232323"
     },
     {

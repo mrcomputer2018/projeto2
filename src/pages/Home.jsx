@@ -157,19 +157,19 @@ const Home = (props) => {
                             <td>abertura_conta</td>
                             <td>sms</td>
                             <td>15:00</td>
-                            <td><button className='btn-gradient'>ver mensagem</button></td>
+                            <td><button className='btn-gradient table'>ver mensagem</button></td>
                         </tr>
                         <tr>
                             <td>fez_pix</td>
                             <td>sms</td>
                             <td>5:00</td>
-                            <td><button className='btn-gradient'>ver mensagem</button></td>
+                            <td><button className='btn-gradient table'>ver mensagem</button></td>
                         </tr>
                         <tr>
                             <td>abertura_conta</td>
                             <td>whatsapp</td>
                             <td>17:00</td>
-                            <td><button className='btn-gradient'>ver mensagem</button></td>
+                            <td><button className='btn-gradient table'>ver mensagem</button></td>
                         </tr>
                     </tbody>
                 </table>
