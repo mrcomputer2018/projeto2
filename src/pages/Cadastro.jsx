@@ -25,17 +25,15 @@ const Cadastro = () => {
             "message": message
         }
         const response = await api.post('/messages/', request)
-        if (response) {
-            console.log("response ok")
-            setId(id + 1)
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Cadastro salvo!!!',
-                showConfirmButton: false,
-                timer: 1500
-              })
-        }
+        setId(id + 1)
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Cadastro feito com sucesso!!!',
+            showConfirmButton: false,
+            timer: 1500
+        })
+        console.log('response :' + response)
     }
 
     return (
