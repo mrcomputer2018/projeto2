@@ -55,13 +55,6 @@
       "trigger": "fez_pix",
       "timer": "19:52",
       "message": "testando agora o modal"
-    },
-    {
-      "id": 1631747023054,
-      "channel": "sms",
-      "trigger": "abertura_conta",
-      "timer": "00:30",
-      "message": "testando agora o modal #02"
     }
   ],
   "channels": [

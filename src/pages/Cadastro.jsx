@@ -10,7 +10,6 @@ const Cadastro = () => {
         history.push('/');
     };
 
-    const [ id, setId ] = useState(25)
     const [ trigger, setTrigger ] = useState('')
     const [ channel, setChannel ] = useState('')
     const [ timer, setTimer ] = useState('')
@@ -33,7 +32,7 @@ const Cadastro = () => {
             Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Cadastro feito com sucesso!!!',
+                title: 'Cadastrado com sucesso!!!',
                 showConfirmButton: false,
                 timer: 1500
             })
@@ -42,7 +41,7 @@ const Cadastro = () => {
             setChannel('')
             setTimer('')
             setMessage('')
-            
+
         } catch (error) {
             Swal.fire({
                 position: 'center',
