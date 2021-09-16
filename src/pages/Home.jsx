@@ -250,7 +250,8 @@ const Home = (props) => {
                                 <td>
                                     <button 
                                         className='btn-gradient table' 
-                                        onClick={() => {viewModalMessage(item.message)}}>ver mensagem
+                                        onClick={() => {viewModalMessage(item.message)}}>
+                                            ver mensagem
                                     </button>
                                 </td>
                             </tr>
