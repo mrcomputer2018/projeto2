@@ -55,11 +55,10 @@ const Home = (props) => {
             setOptions(optionsFormatted);
         
         } catch (error) {
-            console.log(error);
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.errors[0]
+                text: "Servidor inoperante!!!"
             })
         }
     }
@@ -77,11 +76,10 @@ const Home = (props) => {
             setOptionsChannel(optionsFormattedChannel);
         
         } catch (error) {
-            console.log(error);
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.errors[0]
+                text: "Servidor inoperante!!!"
             })
         }
     }
@@ -98,11 +96,10 @@ const Home = (props) => {
             })
             setOptionsTimer(optionsFormattedTimers);
         } catch (error) {
-            console.log(error)
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.errors[0]
+                text: "Servidor inoperante!!!"
             })
         }
     }
@@ -121,14 +118,12 @@ const Home = (props) => {
                 }
             })
             setTd(tdFormatted)
-            console.log(td)
-
+            
         } catch (error) {
-            console.log(error)
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: error.errors[0]
+                text: "Erro ao filtrar dados!!!"
             })
         }
     }

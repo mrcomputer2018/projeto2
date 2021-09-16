@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom'
 import api from "../services/api";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import * as yup from 'yup';
+
 
 const Cadastro = () => {
     const history = useHistory();
@@ -16,6 +18,13 @@ const Cadastro = () => {
     const [ optionsChannel, setOptionsChannel ] = useState([])
     const [ timer, setTimer ] = useState('')
     const [ message, setMessage ] = useState('')
+
+    const schema = yup.object().shape({
+        optionTrigger: yup.string().ensure().required('Campo requerido'),
+        optionChannel: yup.string().ensure().required('Campo requerido'),
+        timer: yup.string().required('Campo obrigatorio').min(2).max(5,"Excedeu ao numero de caracteres"),
+        message: yup.string().required('Campo obrigatorio').min(4 ,'Numero insuficiente caracteres')
+    })
 
     const handleGetOptionsTriggers = async () => {
         try {
@@ -66,6 +75,8 @@ const Cadastro = () => {
         try {
             event.preventDefault()
 
+            const isValid = await schema.validate({ optionTrigger, optionChannel, timer, message })
+
             const request = {
                 "id": Date.now(),
                 "channel": optionChannel,
@@ -93,7 +104,7 @@ const Cadastro = () => {
             Swal.fire({
                 position: 'center',
                 icon: 'error',
-                title: 'Erro ao cadastrar!!!',
+                title: error.errors[0],
                 showConfirmButton: false,
                 timer: 2000
             })

@@ -76,6 +76,13 @@
       "trigger": "abertura_conta",
       "timer": "00:30",
       "message": "testando"
+    },
+    {
+      "id": 1631814733428,
+      "channel": "sms",
+      "trigger": "alterou_dados_pessois",
+      "timer": "11:11",
+      "message": "Testando se funciona agora"
     }
   ],
   "channels": [
