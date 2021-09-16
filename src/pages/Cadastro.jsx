@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom'
 import api from "../services/api";
 import Swal from 'sweetalert2'
@@ -10,35 +10,82 @@ const Cadastro = () => {
         history.push('/');
     };
 
-    const [ trigger, setTrigger ] = useState('')
-    const [ channel, setChannel ] = useState('')
+    const [ optionTrigger, setOptionTrigger ] = useState('')
+    const [ options, setOptions ] = useState([])
+    const [ optionChannel, setOptionChannel ] = useState('')
+    const [ optionsChannel, setOptionsChannel ] = useState([])
     const [ timer, setTimer ] = useState('')
     const [ message, setMessage ] = useState('')
 
+    const handleGetOptionsTriggers = async () => {
+        try {
+            const response = await api.get('/triggers/?_sort=name&_order=asc')
+            
+            const optionsFormatted = response.data.map(({ name }) => {
+                return {
+                    label: name,
+                    value: name
+                }
+            })
+            setOptions(optionsFormatted);
+        
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Servidor falhou!!!'
+            })
+        }
+    }
+
+    const handleGetOptionsChannels = async () => {
+        try {
+            const response = await api.get('/channels/?_sort=name&_order=asc')
+            
+            const optionsFormattedChannel = response.data.map(({ name }) => {
+                return {
+                    label: name,
+                    value: name
+                }
+            })
+            setOptionsChannel(optionsFormattedChannel);
+        
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Servidor falhou!!!'
+            })
+        }
+    }
+
+    //* Submissao do formulario de cadastro
     const handleSubmit = async (event) => {
         try {
             event.preventDefault()
 
             const request = {
                 "id": Date.now(),
-                "channel": channel,
-                "trigger": trigger,
+                "channel": optionChannel,
+                "trigger": optionTrigger,
                 "timer": timer,
                 "message": message
             }
 
-            const response = await api.post('/messages/', request)
+            await api.post('/messages/', request)
 
             Swal.fire({
                 position: 'center',
                 icon: 'success',
                 title: 'Cadastrado com sucesso!!!',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2000
             })
 
-            setTrigger('')
-            setChannel('')
+            setOptionTrigger('')
+            setOptionChannel('')
             setTimer('')
             setMessage('')
 
@@ -48,10 +95,19 @@ const Cadastro = () => {
                 icon: 'error',
                 title: 'Erro ao cadastrar!!!',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 2000
             })
         }
     }
+
+    //* Carregando o options de triggers ao iniciar pagina
+    useEffect(() => {
+        handleGetOptionsTriggers()
+    }, [])
+    //* Carregando channels ao iniciar
+    useEffect(() => {
+        handleGetOptionsChannels()
+    }, [])
 
     return (
         <div className="cadastro">
@@ -72,18 +128,24 @@ const Cadastro = () => {
                             <div className="form-group">
                                 <label htmlFor="select-gatilho">Gatilho:</label>
                                 <div>
-                                    <input 
-                                        type="text" required 
-                                        onChange={(event) => setTrigger(event.target.value)}/>
+                                    <select className="select-gatilho"
+                                        value={optionTrigger} 
+                                        onChange={(event) => setOptionTrigger(event.target.value)}>
+                                            <option value=""></option>
+                                            {options.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
+                                    </select>
                                 </div>
                             </div>
 
                             <div className="form-group">
                                 <label htmlFor="select-canal">Canal:</label>
                                 <div>
-                                    <input 
-                                        type="text" required
-                                        onChange={(event) => setChannel(event.target.value)}/>
+                                    <select className="select-canal"
+                                        value={optionChannel} 
+                                        onChange={(event) => setOptionChannel(event.target.value)}>
+                                            <option value=""></option>
+                                            {optionsChannel.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
+                                    </select>
                                 </div>
                             </div>
 

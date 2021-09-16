@@ -55,6 +55,20 @@
       "trigger": "fez_pix",
       "timer": "19:52",
       "message": "testando agora o modal"
+    },
+    {
+      "id": 1631786986592,
+      "channel": "sms",
+      "trigger": "abertura_conta",
+      "timer": "07:00",
+      "message": "outro teste"
+    },
+    {
+      "id": 1631802275760,
+      "channel": "email",
+      "trigger": "deletou_chave_pix",
+      "timer": "11:00",
+      "message": "teste de inclusao"
     }
   ],
   "channels": [
