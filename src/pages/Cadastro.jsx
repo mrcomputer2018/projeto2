@@ -4,6 +4,12 @@ import api from "../services/api";
 import Swal from 'sweetalert2';
 import * as yup from 'yup';
 
+const schema = yup.object().shape({
+    optionTrigger: yup.string().ensure().required('Campo requerido'),
+    optionChannel: yup.string().ensure().required('Campo requerido'),
+    timer: yup.string().required('Preencha todos os campos').min(2).max(5,"Excedeu ao numero de caracteres"),
+    message: yup.string().required('Preencha todos os campos').min(4 ,'Numero insuficiente caracteres').max(250,"Excedeu ao numero de caracteres")
+})
 
 const Cadastro = () => {
     const history = useHistory();
@@ -19,13 +25,7 @@ const Cadastro = () => {
     const [ timer, setTimer ] = useState('')
     const [ message, setMessage ] = useState('')
 
-    const schema = yup.object().shape({
-        optionTrigger: yup.string().ensure().required('Campo requerido'),
-        optionChannel: yup.string().ensure().required('Campo requerido'),
-        timer: yup.string().required('Campo obrigatorio').min(2).max(5,"Excedeu ao numero de caracteres"),
-        message: yup.string().required('Campo obrigatorio').min(4 ,'Numero insuficiente caracteres')
-    })
-
+    
     const handleGetOptionsTriggers = async () => {
         try {
             const response = await api.get('/triggers/?_sort=name&_order=asc')
@@ -164,8 +164,10 @@ const Cadastro = () => {
                                 <label htmlFor="select-timer">Timer:</label>
                                 <div>
                                     <input
+                                        placeholder="00:00"
+                                        data-mask="00:00"
                                         value= { timer } 
-                                        type="text" required
+                                        type="timer" required
                                         onChange={(event) => setTimer(event.target.value)}/>
                                 </div>
                             </div>
@@ -175,7 +177,7 @@ const Cadastro = () => {
                                 <div className='textarea'>
                                     <textarea 
                                         value= { message }
-                                        name="textarea" id="" cols="120" rows="12" required
+                                        name="textarea" id="textarea" cols="120" rows="12" required
                                         onChange={(event) => setMessage(event.target.value)}></textarea>
                                 </div>
                             </div>
