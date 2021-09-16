@@ -59,7 +59,7 @@ const Home = (props) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Servidor falhou!!!'
+                text: error.errors[0]
             })
         }
     }
@@ -81,7 +81,7 @@ const Home = (props) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Servidor falhou!!!'
+                text: error.errors[0]
             })
         }
     }
@@ -102,7 +102,7 @@ const Home = (props) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Servidor falhou!!!'
+                text: error.errors[0]
             })
         }
     }
@@ -128,7 +128,7 @@ const Home = (props) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Servidor falhou!!!'
+                text: error.errors[0]
             })
         }
     }

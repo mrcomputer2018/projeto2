@@ -154,7 +154,7 @@ const Cadastro = () => {
                                 <div>
                                     <input
                                         value= { timer } 
-                                        type="text" required placeholder=""
+                                        type="text" required
                                         onChange={(event) => setTimer(event.target.value)}/>
                                 </div>
                             </div>
