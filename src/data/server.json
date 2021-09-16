@@ -69,6 +69,13 @@
       "trigger": "deletou_chave_pix",
       "timer": "11:00",
       "message": "teste de inclusao"
+    },
+    {
+      "id": 1631803103304,
+      "channel": "whatsapp",
+      "trigger": "abertura_conta",
+      "timer": "00:30",
+      "message": "testando"
     }
   ],
   "channels": [

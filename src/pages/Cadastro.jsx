@@ -152,8 +152,9 @@ const Cadastro = () => {
                             <div className="form-group">
                                 <label htmlFor="select-timer">Timer:</label>
                                 <div>
-                                    <input 
-                                        type="text" required
+                                    <input
+                                        value= { timer } 
+                                        type="text" required placeholder=""
                                         onChange={(event) => setTimer(event.target.value)}/>
                                 </div>
                             </div>
@@ -162,6 +163,7 @@ const Cadastro = () => {
                                 <label htmlFor="select-textarea">Mensagem:</label>
                                 <div className='textarea'>
                                     <textarea 
+                                        value= { message }
                                         name="textarea" id="" cols="120" rows="12" required
                                         onChange={(event) => setMessage(event.target.value)}></textarea>
                                 </div>
