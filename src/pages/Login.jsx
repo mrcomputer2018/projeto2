@@ -8,10 +8,10 @@ const Login = ({ onLoginEmail, onLoginPassword, onVerify }) => {
 
     return (
         <div className='login container'>
-            <Container component='main' maxWidth='xs'>
+            <Container clasName='container' component='main' maxWidth='xs'>
                 <div className="mt-3 mt-md-5">
                     <div className="text-center">
-                        <Typography className='mt-3 font-weight-bold' component='h1' variant='h6'>LOGIN</Typography>
+                        <Typography className='mt-3 font-weight-bold' component='h1' variant='h3'>LOGIN</Typography>
                     </div>
 
                     <div className="mt-4">
@@ -44,7 +44,7 @@ const Login = ({ onLoginEmail, onLoginPassword, onVerify }) => {
                             variant='contained'
                             fullWidth
                             size='large'
-                            className='mb-3 mb-md-4 mt-4'
+                            className='mb-4 mb-md-4 mt-4'
                             onClick={ function(e) {onVerify()}}
                         >
                             Entrar

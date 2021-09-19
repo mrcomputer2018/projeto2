@@ -45,8 +45,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 150px auto;
-  
+  margin: 250px auto;
+}
+
+main {
+  border: 1px solid blue;
+  border-radius: .4rem;
+  background: var(--color-LightGray);
+  padding-bottom: 3rem;
 }
 
 .div-subtitle {
@@ -232,6 +238,10 @@ div.table {
   text-align: center;
   padding: .4rem 1.7rem;
   font-size: 1.1rem;
+}
+
+.table tr {
+  border: none;
 }
 
 .table td button {
