@@ -75,11 +75,9 @@ Para iniciar o servidor de teste
 ### npm install sweetalert2 ###
 Instalacao da boblioteca para uso dos modais
 
+### Iniciar json-server
+yarn server
 
-*** tabela.jsx
-*** home.jsx
-*** Login.jsx
-*** criando Login
-*** yarn add redux
-*** npm install react-redux
-*** app.js
+### Login no app
+email: marcelo@marcelo.com.br
+senha: 1234
