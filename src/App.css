@@ -5,7 +5,6 @@
   --color-blackForm: rgba(10, 10, 35, 0.9);
   --color-green: #37af65;
   --color-greenLght: hsl(143, 52%, 60%);
-  --color-BrightCyan: hsl(192, 70%, 51%);
   --color-GrayishBlue: hsl(233, 8%, 62%);
   --color-LightGrayishBlue: hsl(220, 16%, 96%);
   --color-VeryLightGray: hsl(0, 0%, 98%);
@@ -39,6 +38,15 @@ body {
   width: 100vw;
   height: 100vh;  
   margin: 0 auto;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 150px auto;
+  
 }
 
 .div-subtitle {
@@ -142,7 +150,8 @@ div.form-group div select, div.form-group div input {
 
 /*** header */
 .header {
-  width: 100vw ;      
+  width: 100vw ;
+  height: 90px;      
   background-color: var(--color-orange);
   border-bottom: 1px solid gray;
 
@@ -152,11 +161,15 @@ div.form-group div select, div.form-group div input {
 .header h1 {
   width: 50vw;
   margin-left: 2rem;
+  font-weight: bold;
+
 }
 .menu ul {
   display: flex;
+  justify-content: center;
   align-items: flex-end;
   justify-content: space-around;
+  margin-bottom: 0;
 }
 
 .menu li{

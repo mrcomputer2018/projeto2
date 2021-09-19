@@ -13,7 +13,7 @@ const Header = () => {
                             <Link to='/dashboard'>Dashboard</Link>
                         </li>
                         <li>
-                            <Link to='/'>Mensagem</Link>
+                            <Link to='/message'>Mensagem</Link>
                         </li>
                     </ul>
                 </nav>

@@ -69,5 +69,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+### yarn server 
+Para iniciar o servidor de teste
+
 ### npm install sweetalert2 ###
 Instalacao da boblioteca para uso dos modais
+
+
+*** tabela.jsx
+*** home.jsx
+*** Login.jsx
+*** criando Login
+*** yarn add redux
+*** npm install react-redux
+*** app.js

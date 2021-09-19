@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom'
+/* import Tabela from '../componente/Tabela' */
 import api from '../services/api'
 import Swal from 'sweetalert2'
 
@@ -153,33 +154,6 @@ const Home = (props) => {
         setTd(response.data)
     }
 
-    /* const handleSubmit = async (event) => {
-        event.preventDefault()
-        let url = '/messages?'
-
-        if (optionSelected) {
-            url += `trigger_like=${optionSelected}`
-        }
-
-        if (optionSelectedChannel) {
-            if (optionSelected) {
-                url += '&'
-            }
-            url += `channel_like=${optionSelectedChannel}`
-        }
-
-        if (optionSelectedTimers) {
-            if (optionSelected || optionSelectedChannel) {
-                url += '&'
-            }
-            url += `timer_like=${optionSelectedTimers}`
-        }
-
-        const response = await api.get(url)
-
-        setTd(response.data)
-    } */
-           
     return (
         <div className="home">
             <form onSubmit={handleSubmit}>
@@ -231,7 +205,8 @@ const Home = (props) => {
                     </div>
                 </form>
             </form>
-            <div className='table'>
+
+           <div className='table'>
                 <table>
                     <thead>
                         <tr>

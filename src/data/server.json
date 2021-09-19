@@ -108,5 +108,11 @@
       "id": 9,
       "name": "falou_com_atendimento"
     }
+  ],
+  "login": [
+    {
+      "email": "marcelo@marcelo.com.br",
+      "password": 1234
+    }
   ]
 }

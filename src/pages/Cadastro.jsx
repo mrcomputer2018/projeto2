@@ -15,7 +15,7 @@ const Cadastro = () => {
     const history = useHistory();
 
     const goToHome = () => {
-        history.push('/');
+        history.push('/message');
     };
 
     const [ optionTrigger, setOptionTrigger ] = useState('')

@@ -2,8 +2,8 @@ import React from "react"
 import { Switch, Route } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import Cadastro from "../pages/Cadastro";
-import Login from "../pages/Cadastro"
-import Home from "../pages/Home";
+import Message from "../pages/Message";
+import Login from '../pages/Login'
 import NotFound from "../pages/NotFound";
 
 const Content = (props) => {
@@ -16,11 +16,14 @@ const Content = (props) => {
                 <Route path='/cadastro'>
                     <Cadastro />
                 </Route>
-                <Route path='/login'>
-                    <Login />
+                <Route path='/message'>
+                    <Message />
+                </Route>
+                <Route path='/login' exact>
+                    <Login/>
                 </Route>
                 <Route path='/' exact>
-                    <Home/>
+                    <Login/>
                 </Route>
                 <Route path='*'>
                     <NotFound/>
